@@ -1,0 +1,464 @@
+# VIB-CCB-BioIT tools & pipelines catalog.
+# Edit this file (via pull request); README.md and catalog.csv are generated from it.
+#
+# Fields
+#   id        unique slug (lowercase, dashes)
+#   name      display name
+#   category  one of the categories listed in scripts/build_catalog.py
+#   summary   one line: what it does (input -> output)
+#   data      data type
+#   step      analysis step (End-to-end, QC, Registration, ...)
+#   topic     disease / topic (optional)
+#   language  language / framework
+#   status    public    = open repository, anyone can use it (set `repo`)
+#             internal  = exists in the center, ask the contact (or private repo)
+#             building  = in development
+#   repo      URL of the GitHub repository (leave empty if none / private)
+#   contact   person in charge 
+#   lab       group / lab
+#   share     yes = owner is willing to share / package it
+#   notes     free text (optional)
+#
+# Imported from CCB_bioinfo_lunch_9Nov2026.xlsx. Names marked "(name TBD)" had no
+# tool name in the sheet — please rename. Public entries without `repo` need a URL.
+
+tools:
+  # ---------------- Imaging & microscopy ----------------
+  - id: napari-nd-registration
+    name: napari-nd-registration
+    category: Imaging & microscopy
+    summary: Elastic nd-registration with dimension awareness; mainly breathing correction of 5D intravital measurements.
+    data: Intravital nd-stack
+    step: Registration
+    topic: Any
+    language: Python (dask, opencl)
+    status: internal
+    repo: ""
+    contact: Marcel Issler
+    lab: CoSc
+    share: yes
+    notes: Private GitHub repo.
+
+  - id: napari-fast4dreg
+    name: napari-fast4dreg
+    category: Imaging & microscopy
+    summary: Fast rigid registration for large volumetric time-lapse series.
+    data: Microscope volumetric time-series
+    step: Registration
+    topic: Any
+    language: Python (dask, opencl, napari)
+    status: public
+    repo: https://github.com/COSC-Lab/napari-fast4dreg
+    contact: Marcel Issler
+    lab: CoSc
+    share: yes
+
+  - id: 3d-he-morphology
+    name: 3D epithelial morphology reconstruction (name TBD)
+    category: Imaging & microscopy
+    summary: Reconstructs 3D epithelial morphology from sequential H&E slides with variable spacing (here 20 µm); supports intermediate slices.
+    data: H&E (primary), multimodal (secondary)
+    step: End-to-end
+    topic: Healthy breast and breast cancer
+    language: Python (dask, pytorch, napari)
+    status: building
+    repo: ""
+    contact: Marcel Issler
+    lab: CoSc
+    share: yes
+
+  - id: 5d-ktr-pipeline
+    name: 5D-KTR-pipeline
+    category: Imaging & microscopy
+    summary: Quantifies spatio-temporal kinase translocation dynamics (nuclear vs cytosolic signal), including segmentation and morphological features.
+    data: Kinase-translocation-sensor volumetric time-lapse
+    step: End-to-end
+    topic: Various
+    language: Python (dask, napari)
+    status: building
+    repo: ""
+    contact: Marcel Issler
+    lab: CoSc
+    share: yes
+    notes: ~95% done; runs locally and on the cluster.
+
+  # ---------------- Single-cell transcriptomics ----------------
+  - id: melanoma-scrna-pipeline
+    name: Melanoma scRNA/snRNA pipeline (name TBD)
+    category: Single-cell transcriptomics
+    summary: Preprocessing, QC and malignant-cell annotation.
+    data: scRNA-seq / snRNA-seq
+    step: End-to-end
+    topic: Melanoma
+    language: Snakemake, R, Python
+    status: building
+    repo: ""
+    contact: Ariel Pulido Vicuña
+    lab: Pozniak
+    share: yes
+
+  - id: bartab
+    name: Bartab
+    category: Single-cell transcriptomics
+    summary: SPLINTR barcode processing, QC, annotation and clone identification.
+    data: SPLINTR barcodes
+    step: End-to-end
+    topic: Any
+    language: Nextflow
+    status: public
+    repo: ""
+    contact: Ariel Pulido Vicuña
+    lab: Pozniak
+    share: yes
+
+  - id: crc-scrna-pipeline
+    name: Colorectal cancer scRNA/snRNA pipeline (name TBD)
+    category: Single-cell transcriptomics
+    summary: Preprocessing, QC, clustering, annotation and pathway analysis.
+    data: scRNA-seq / snRNA-seq
+    step: End-to-end
+    topic: Colorectal cancer
+    language: bash, R
+    status: internal
+    repo: ""
+    contact: Tom Venken
+    lab: Lambrechts
+    share: yes
+    notes: In development. Based on https://github.com/lambrechtslab/FSGS_Deleersnijder_et_al
+
+  - id: archetype-analysis
+    name: Archetype analysis (name TBD)
+    category: Single-cell transcriptomics
+    summary: Archetype analysis; description of continuous phenotypes.
+    data: scRNA-seq / snRNA-seq
+    step: Clustering & cell-type annotation
+    topic: Melanoma
+    language: Python (scanpy, squidpy)
+    status: building
+    repo: ""
+    contact: Axel Rodriguez Perez
+    lab: Pozniak
+    share: yes
+    notes: Personal GitHub + cluster staging area.
+
+  - id: scrna-hcc-urogenital
+    name: HCC / urogenital scRNA/snRNA pipeline (name TBD)
+    category: Single-cell transcriptomics
+    summary: Preprocessing, QC, clustering, annotation, pathway analysis, CNV inference, single-cell SNP/mutation calling.
+    data: scRNA-seq / snRNA-seq
+    step: End-to-end
+    topic: HCC / urogenital carcinoma
+    language: bash, R
+    status: internal
+    repo: ""
+    contact: Gino Philips
+    lab: Lambrechts
+    share: yes
+
+  - id: soupx-improved
+    name: Improved SoupX wrapper (name TBD)
+    category: Single-cell transcriptomics
+    summary: Improved implementation of the SoupX method, packaged as a function.
+    data: scRNA-seq / snRNA-seq
+    step: Ambient RNA correction
+    topic: Any (except one-cell-type datasets)
+    language: R (Seurat, SoupX)
+    status: internal
+    repo: ""
+    contact: Juan Fernandez Garcia
+    lab: Fendt
+    share: yes
+    notes: Currently on a laptop.
+
+  - id: drug-repurposing-scrna
+    name: Drug repurposing from transcriptional changes (name TBD)
+    category: Single-cell transcriptomics
+    summary: Prioritises drugs that induce transcriptional changes.
+    data: scRNA-seq / snRNA-seq
+    step: Other
+    topic: Melanoma
+    language: Python
+    status: building
+    repo: ""
+    contact: Axel Rodriguez Perez
+    lab: Pozniak
+    share: yes
+
+  - id: scrna-trajectory-ccc
+    name: scRNA trajectory & cell-cell communication (name TBD)
+    category: Single-cell transcriptomics
+    summary: QC, report and visualization for scRNA-seq with cell trajectories and cell-cell communication.
+    data: scRNA-seq / cell trajectory / cell-cell communication
+    step: QC, report, visualization
+    topic: ""
+    language: ""
+    status: internal
+    repo: ""
+    contact: Fateme Safaeifard
+    lab: CoSc
+
+  - id: pan-cancer-lodi
+    name: Pan-cancer downstream analysis (Lodi et al.)
+    category: Single-cell transcriptomics
+    summary: Downstream analysis, visualization and reporting for the pan-cancer scRNA-seq study.
+    data: scRNA-seq / snRNA-seq
+    step: End-to-end, visualization & reporting
+    topic: Pan-cancer
+    language: R
+    status: public
+    repo: https://github.com/lambrechtslab/Pan-cancer_Lodietal
+    contact: Tom Venken
+    lab: Lambrechts
+    share: yes
+
+  # ---------------- Spatial omics ----------------
+  - id: melanoma-spatial-pipeline
+    name: Melanoma spatial transcriptomics pipeline (name TBD)
+    category: Spatial omics
+    summary: Preprocessing, QC, clustering and annotation.
+    data: Spatial transcriptomics
+    step: End-to-end
+    topic: Melanoma
+    language: Python
+    status: internal
+    repo: ""
+    contact: Georg Demaerel
+    lab: Pozniak
+    share: yes
+    notes: In development.
+
+  - id: spatial-hcc-urogenital
+    name: HCC / urogenital spatial transcriptomics pipeline (name TBD)
+    category: Spatial omics
+    summary: Preprocessing, QC, clustering, annotation, scRNA-seq integration.
+    data: Spatial transcriptomics
+    step: End-to-end
+    topic: HCC / urogenital carcinoma
+    language: bash, R
+    status: internal
+    repo: ""
+    contact: Gino Philips
+    lab: Lambrechts
+
+  - id: spatial-metabolomics
+    name: Spatial metabolomics / lipidomics pipeline (name TBD)
+    category: Spatial omics
+    summary: Aggregation over pre-defined spatial regions, normalization, statistics and ranking of altered metabolites (input exported from e.g. SCiLS).
+    data: Spatial metabolomics / lipidomics
+    step: End-to-end
+    topic: Any
+    language: R
+    status: internal
+    repo: ""
+    contact: Juan Fernandez Garcia
+    lab: Fendt
+    share: yes
+    notes: Currently on a laptop.
+
+  - id: spatial-proteomics-multiplex
+    name: Spatial proteomics / multiplex imaging pipeline (name TBD)
+    category: Spatial omics
+    summary: Preprocessing, cell segmentation, background correction, QC, clustering and annotation.
+    data: Spatial proteomics / multiplex imaging
+    step: End-to-end
+    topic: Urogenital carcinoma
+    language: bash, R
+    status: internal
+    repo: ""
+    contact: Gino Philips
+    lab: Lambrechts
+
+  # ---------------- Long-read & DNA sequencing ----------------
+  - id: lrsomatic
+    name: Lrsomatic
+    category: Long-read & DNA sequencing
+    summary: Preprocessing, variant calling and QC of long-read WGS.
+    data: Long-read WGS
+    step: End-to-end
+    topic: Pan-cancer
+    language: Nextflow
+    status: public
+    repo: "https://github.com/IntGenomicsLab/lrsomatic"
+    contact: Luuk Harbers
+    lab: Demeulemeester
+    share: yes
+
+  - id: scnanoseq-fork
+    name: scnanoseq (fork)
+    category: Long-read & DNA sequencing
+    summary: Preprocessing and QC of long-read single-cell DNA/RNA (forked nf-core pipeline).
+    data: Long-read single-cell DNA/RNA
+    step: End-to-end
+    topic: Not disease-specific (method)
+    language: Nextflow
+    status: public
+    repo: "https://github.com/ljwharbers/scnanoseq"
+    contact: Luuk Harbers
+    lab: Demeulemeester
+    share: yes
+
+  - id: ascat-sc
+    name: ASCAT.sc
+    category: Long-read & DNA sequencing
+    summary: Copy number calling of (long-read) single-cell DNA sequencing.
+    data: Single-cell DNA
+    step: Copy number calling
+    topic: Not disease-specific (method)
+    language: R
+    status: public
+    repo: "https://github.com/ljwharbers/ASCAT.sc"
+    contact: Luuk Harbers
+    lab: Demeulemeester
+    share: yes
+
+  - id: ascat-sc-explorer
+    name: ASCAT.sc-explorer
+    category: Long-read & DNA sequencing
+    summary: Visualization and QC tool for single-cell copy number data.
+    data: Single-cell DNA
+    step: Visualization / reporting
+    topic: Not disease-specific (method)
+    language: JavaScript
+    status: public
+    repo: ""
+    contact: Harry (Charalampos Anagnost)
+    lab: Demeulemeester
+    share: yes
+
+  - id: ascat-sc-rust
+    name: ASCAT.sc rewrite (Rust/Python)
+    category: Long-read & DNA sequencing
+    summary: Speed-optimised rewrite of ASCAT.sc in Rust/Python.
+    data: Single-cell DNA
+    step: Copy number calling
+    topic: Not disease-specific (method)
+    language: Rust, Python
+    status: building
+    repo: ""
+    contact: Harry (Charalampos Anagnost)
+    lab: Demeulemeester
+    share: yes
+    notes: Private GitHub repo.
+
+  - id: ggmethylation
+    name: ggmethylation
+    category: Long-read & DNA sequencing
+    summary: Visualization package for methylation plotting.
+    data: Long-read WGS
+    step: Visualization / reporting
+    topic: Not disease-specific (method)
+    language: R
+    status: public
+    repo: "https://github.com/ljwharbers/ggmethylation"
+    contact: Luuk Harbers
+    lab: Demeulemeester
+    share: yes
+
+  - id: nanowgs
+    name: nanoWGS
+    category: Long-read & DNA sequencing
+    summary: Preprocessing pipeline for nanopore WGS data.
+    data: Long-read WGS
+    step: Preprocessing
+    topic: Non-cancer disease
+    language: Nextflow
+    status: public
+    repo: ""
+    contact: Alexandra Pančíková
+    lab: Demeulemeester
+    share: yes
+
+  - id: fibertron
+    name: Fibertron
+    category: Long-read & DNA sequencing
+    summary: Sequence-to-function model for downstream variant interpretation.
+    data: Long-read WGS
+    step: Downstream variant interpretation
+    topic: ""
+    language: Python
+    status: internal
+    repo: ""
+    contact: Marios Eftychiou
+    lab: Demeulemeester
+    share: yes
+    notes: Contact if interested.
+
+  - id: cfdna-fragmentomics
+    name: cfDNA fragmentomics pipeline (name TBD)
+    category: Long-read & DNA sequencing
+    summary: Fragmentomics analysis of cell-free DNA.
+    data: Cell-free DNA
+    step: End-to-end
+    topic: Ovarian / gynaecological
+    language: Nextflow, bash, R
+    status: building
+    repo: ""
+    contact: Pieter Busschaert
+    lab: Lambrechts
+    notes: Private GitHub repo.
+
+  # ---------------- Bulk RNA-seq & proteomics ----------------
+  - id: longitudinal-bulk-rnaseq
+    name: Longitudinal bulk RNA-seq (name TBD)
+    category: Bulk RNA-seq & proteomics
+    summary: QC, analysis and visualization of longitudinal bulk RNA-seq.
+    data: Longitudinal bulk RNA-seq
+    step: QC, analysis, visualization
+    topic: ""
+    language: R
+    status: internal
+    repo: ""
+    contact: Fateme Safaeifard
+    lab: CoSc
+
+  - id: bulk-rnaseq-end2end
+    name: Bulk RNA-seq end-to-end (name TBD)
+    category: Bulk RNA-seq & proteomics
+    summary: End-to-end bulk RNA-seq analysis.
+    data: Bulk RNA-seq
+    step: End-to-end
+    topic: Various
+    language: ""
+    status: internal
+    repo: ""
+    contact: Gino Philips
+    lab: Lambrechts
+
+  - id: bulk-rnaseq-report
+    name: Bulk RNA-seq QC & report (name TBD)
+    category: Bulk RNA-seq & proteomics
+    summary: QC, report and visualization for bulk RNA-seq.
+    data: Bulk RNA-seq
+    step: QC, report, visualization
+    topic: ""
+    language: ""
+    status: internal
+    repo: ""
+    contact: Fateme Safaeifard
+    lab: CoSc
+
+  - id: longitudinal-proteomics
+    name: Longitudinal proteomics (name TBD)
+    category: Bulk RNA-seq & proteomics
+    summary: QC, analysis and visualization of longitudinal proteomics.
+    data: Longitudinal proteomics
+    step: QC, analysis, visualization
+    topic: ""
+    language: R
+    status: internal
+    repo: ""
+    contact: Fateme Safaeifard
+    lab: CoSc
+
+  - id: proteomics-qc
+    name: Proteomics QC & analysis (name TBD)
+    category: Bulk RNA-seq & proteomics
+    summary: QC, analysis and visualization of proteomics data.
+    data: Proteomics
+    step: QC, analysis, visualization
+    topic: ""
+    language: ""
+    status: internal
+    repo: ""
+    contact: Fateme Safaeifard
+    lab: CoSc
