@@ -14,7 +14,7 @@
 #             internal  = exists in the center, ask the contact (or private repo)
 #             building  = in development
 #   repo      URL of the GitHub repository (leave empty if none / private)
-#   contact   person in charge 
+#   contact   person in charge (full name)
 #   lab       group / lab
 #   share     yes = owner is willing to share / package it
 #   notes     free text (optional)
