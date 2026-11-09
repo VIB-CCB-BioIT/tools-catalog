@@ -13,7 +13,7 @@
      language: Nextflow
      status: internal           # public | internal | building
      repo: ""                   # GitHub URL once public
-     contact: Your first name
+     contact: Your full name
      lab: Your lab
      share: yes
    ```
@@ -35,4 +35,4 @@ pip install pyyaml
 python scripts/build_catalog.py
 ```
 
-**Privacy:** only list a first name and lab as contact — no emails or phone numbers.
+**Contact:** list the person in charge by full name, plus their lab or group. Do not add emails or phone numbers.
