@@ -18,7 +18,7 @@
      share: yes
    ```
 
-2. Open a pull request. A check validates the file; after merge, the tables in `README.md` and `catalog.csv` are rebuilt automatically.
+2. Open a pull request. A check validates the file; the tables in `README.md` and `catalog.csv` are rebuilt automatically on your pull request.
 
 **Status meanings**
 
