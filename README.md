@@ -2,7 +2,7 @@
 
 Everything developed or used in the center, in one place. Found something you need? Open the repository (if public) or **contact the person in charge** listed in the last column.
 
-- Missing or wrong entry? See [CONTRIBUTING.md](CONTRIBUTING.md) — it is a one-line edit of [`tools.yaml`](tools.yaml).
+- Missing or wrong entry? See [CONTRIBUTING.md](CONTRIBUTING.md); it is a one-line edit of [`tools.yaml`](tools.yaml).
 - Want it as a spreadsheet? Download [`catalog.csv`](catalog.csv).
 - Want to hear about new releases? Join the Teams channel (link on the [organization page](https://github.com/VIB-CCB-BioIT)).
 
