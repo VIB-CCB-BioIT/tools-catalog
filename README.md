@@ -6,13 +6,7 @@ Everything developed or used in the center, in one place. Found something you ne
 - Want it as a spreadsheet? Download [`catalog.csv`](catalog.csv).
 - Want to hear about new releases? Join the Teams channel (link on the [organization page](https://github.com/VIB-CCB-BioIT)).
 
-> The tables below are **generated** from `tools.yaml`. Do not edit between the markers.
-
 <!-- CATALOG:START -->
-**31 entries** — 9 public · 15 internal · 7 in development.
-
-Legend: Public · Internal – ask contact · In development.
-
 ### Single-cell transcriptomics
 
 | Name | What it does | Data / topic | Language | Status | Contact |

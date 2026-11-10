@@ -10,7 +10,7 @@ Requires: PyYAML
 import csv
 import io
 import sys
-from collections import Counter, defaultdict
+from collections import defaultdict
 from pathlib import Path
 
 import yaml
@@ -70,14 +70,7 @@ def esc(s):
 
 
 def render(tools):
-    counts = Counter(t["status"] for t in tools)
-    out = [
-        f"**{len(tools)} entries** — "
-        f"{counts['public']} public · {counts['internal']} internal · {counts['building']} in development.",
-        "",
-        "Legend: " + " · ".join(STATUSES.values()) + ".",
-        "",
-    ]
+    out = []
     by_cat = defaultdict(list)
     for t in tools:
         by_cat[t["category"]].append(t)
