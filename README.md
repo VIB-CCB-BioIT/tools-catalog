@@ -1,4 +1,4 @@
-# VIB-CCB-BioIT Catalog of Tools & Pipelines
+# VIB-CCB-BioIT & AI Catalog of Tools & Pipelines
 
 Everything developed or used in the center, in one place. Found something you need? Open the repository (if public) or **contact the person in charge** listed in the last column.
 
