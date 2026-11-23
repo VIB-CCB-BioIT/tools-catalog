@@ -283,16 +283,16 @@ tools:
     lab: Demeulemeester
     share: yes
 
-  - id: scnanoseq-fork
-    name: scnanoseq (fork)
+  - id: LRSinglecell
+    name: LRSinglecell
     category: Long-read & DNA sequencing
-    summary: Preprocessing and QC of long-read single-cell DNA/RNA (forked nf-core pipeline).
+    summary: Preprocessing and QC of long-read single-cell DNA/RNA.
     data: Long-read single-cell DNA/RNA
     step: End-to-end
     topic: Not disease-specific (method)
     language: Nextflow
     status: public
-    repo: "https://github.com/ljwharbers/scnanoseq"
+    repo: "https://github.com/IntGenomicsLAb/LRSinglecell"
     contact: Luuk Harbers
     lab: Demeulemeester
     share: yes

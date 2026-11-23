@@ -37,9 +37,9 @@ Everything developed or used in the center, in one place. Found something you ne
 | [ASCAT.sc](https://github.com/ljwharbers/ASCAT.sc) | Copy number calling of (long-read) single-cell DNA sequencing. | Single-cell DNA · Not disease-specific (method) | R | Public | Luuk Harbers (Demeulemeester) |
 | ASCAT.sc-explorer | Visualization and QC tool for single-cell copy number data. | Single-cell DNA · Not disease-specific (method) | JavaScript | Public | Harry (Charalampos Anagnost) (Demeulemeester) |
 | [ggmethylation](https://github.com/ljwharbers/ggmethylation) | Visualization package for methylation plotting. | Long-read WGS · Not disease-specific (method) | R | Public | Luuk Harbers (Demeulemeester) |
+| [LRSinglecell](https://github.com/IntGenomicsLAb/LRSinglecell) | Preprocessing and QC of long-read single-cell DNA/RNA. | Long-read single-cell DNA/RNA · Not disease-specific (method) | Nextflow | Public | Luuk Harbers (Demeulemeester) |
 | [Lrsomatic](https://github.com/IntGenomicsLab/lrsomatic) | Preprocessing, variant calling and QC of long-read WGS. | Long-read WGS · Pan-cancer | Nextflow | Public | Luuk Harbers (Demeulemeester) |
 | nanoWGS | Preprocessing pipeline for nanopore WGS data. | Long-read WGS · Non-cancer disease | Nextflow | Public | Alexandra Pančíková (Demeulemeester) |
-| [scnanoseq (fork)](https://github.com/ljwharbers/scnanoseq) | Preprocessing and QC of long-read single-cell DNA/RNA (forked nf-core pipeline). | Long-read single-cell DNA/RNA · Not disease-specific (method) | Nextflow | Public | Luuk Harbers (Demeulemeester) |
 | ASCAT.sc rewrite (Rust/Python) | Speed-optimised rewrite of ASCAT.sc in Rust/Python. | Single-cell DNA · Not disease-specific (method) | Rust, Python | In development | Harry (Charalampos Anagnost) (Demeulemeester) |
 | cfDNA fragmentomics pipeline (name TBD) | Fragmentomics analysis of cell-free DNA. | Cell-free DNA · Ovarian / gynaecological | Nextflow, bash, R | In development | Pieter Busschaert (Lambrechts) |
 | Fibertron | Sequence-to-function model for downstream variant interpretation. | Long-read WGS | Python | Internal – ask contact | Marios Eftychiou (Demeulemeester) |
